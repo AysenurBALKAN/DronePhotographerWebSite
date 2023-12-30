@@ -13,5 +13,6 @@ namespace DronePhotographerWebSite.Controllers
         {
             return View();
         }
+
     }
 }

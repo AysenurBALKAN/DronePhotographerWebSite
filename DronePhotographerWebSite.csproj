@@ -131,9 +131,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ToDoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -144,6 +146,7 @@
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectDetail.cs" />
+    <Compile Include="Models\ToDo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4112,12 +4115,17 @@
     <Content Include="Views\About\About.cshtml" />
     <Content Include="Views\Contact\Contact.cshtml" />
     <Content Include="Views\Project\ProjectDetail.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Views\Dashboard\ProjectTablePartial.cshtml" />
+    <Content Include="Views\Dashboard\ToDoPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="skydash\.git\objects\info\" />
     <Folder Include="skydash\.git\objects\pack\" />
     <Folder Include="skydash\.git\refs\tags\" />
+    <Folder Include="Views\ToDo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

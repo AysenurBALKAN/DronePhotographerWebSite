@@ -10,12 +10,13 @@ namespace DronePhotographerWebSite.Models
     {
         [Key]
         public int ProjectId { get; set; }
-        public string ProjectImage { get; set; }
         public string ProjetTitle { get; set; }
         public string ProjectDescription { get; set; }
-        public int ProjectDetailId { get; set; }
+        public string ProjectDetail { get; set; }
+        public string ProjectImage1 { get; set; }
+        public string ProjectImage2 { get; set; }
+        public string ProjectImage3 { get; set; }
+        public string ProjectImage4 { get; set; }
 
-        public ICollection<ProjectDetail>ProjectDetails { get; set; }
-       
     }
 }

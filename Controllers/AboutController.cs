@@ -9,10 +9,13 @@ namespace DronePhotographerWebSite.Controllers
     public class AboutController : Controller
     {
         // GET: About
+
+
         public ActionResult About()
         {
             return View();
         }
+
 
     }
 }

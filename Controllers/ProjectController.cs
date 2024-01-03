@@ -17,6 +17,11 @@ namespace DronePhotographerWebSite.Controllers
             var degerler = c.Projects.ToList();
             return View(degerler);
         }
+        public ActionResult ProjectList()
+        {
+            var degerler = c.Projects.ToList();
+            return View(degerler);
+        }
         public ActionResult ProjectDetail()
         {
             return View();

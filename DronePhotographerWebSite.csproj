@@ -505,6 +505,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="dronephotography-main\about.html" />
     <Content Include="dronephotography-main\assets\css\animate.min.css" />
     <Content Include="dronephotography-main\assets\css\animated-headline.css" />
@@ -811,6 +812,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -4505,6 +4507,7 @@
     <Content Include="Views\Dashboard\ProjectTablePartial.cshtml" />
     <Content Include="Views\Project\ProjectAdd.cshtml" />
     <Content Include="Views\Project\ProjectUpdate.cshtml" />
+    <Content Include="Views\Project\ProjectList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

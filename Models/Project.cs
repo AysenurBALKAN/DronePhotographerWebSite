@@ -16,7 +16,7 @@ namespace DronePhotographerWebSite.Models
         public string ProjectImage1 { get; set; }
         public string ProjectImage2 { get; set; }
         public string ProjectImage3 { get; set; }
-        public string ProjectImage4 { get; set; }
+     
 
     }
 }

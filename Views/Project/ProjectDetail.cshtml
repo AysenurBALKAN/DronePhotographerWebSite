@@ -1,0 +1,183 @@
+﻿@model DronePhotographerWebSite.Models.Project
+@{
+    ViewBag.Title = "ProjectDetail";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+<link href="~/styleCss/fancybox.css" rel="stylesheet" />
+<link href="~/styleCss/fancythumb.css" rel="stylesheet" />
+<style>
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #myCarousel {
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+        #myCarousel .f-carousel__slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+</style>
+<div class="slider-area2 ">
+    <div class="slider-height2 hero-overly d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero__caption hero__caption2">
+                        <h2>Proje Detayı</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("ProjectDetail", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.ProjectId)
+    <form method="post">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <br />
+                            <h1>@Model.ProjetTitle</h1>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>@Html.Raw(Model.ProjectDetail)</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div>
+                                <div class="f-carousel" id="myCarousel">
+                                    <div class="f-carousel__slide"
+                                         data-thumb-src="@Model.ProjectImage1">
+                                        <img width="640"
+                                             height="480"
+                                             alt=""
+                                             data-lazy-src="@Model.ProjectImage1" />
+                                    </div>
+                                    <div class="f-carousel__slide"
+                                         data-thumb-src="@Model.ProjectImage2">
+                                        <img width="640"
+                                             height="480"
+                                             alt=""
+                                             data-lazy-src="@Model.ProjectImage2" />
+                                    </div>
+                                    <div class="f-carousel__slide"
+                                         data-thumb-src="@Model.ProjectImage3">
+                                        <img width="640"
+                                             height="480"
+                                             alt=""
+                                             data-lazy-src="@Model.ProjectImage3" />
+                                    </div>
+                                    @*<div class="f-carousel__slide"
+                                         data-thumb-src="https://lipsum.app/id/60/192x144">
+                                        <img width="640"
+                                             height="480"
+                                             alt=""
+                                             data-lazy-src="https://lipsum.app/id/60/640x480" />
+                                    </div>
+                                    <div class="f-carousel__slide"
+                                         data-thumb-src="https://lipsum.app/id/33/192x144">
+                                        <img width="640"
+                                             height="480"
+                                             alt=""
+                                             data-lazy-src="https://lipsum.app/id/33/640x480" />
+                                    </div>
+                                    <div class="f-carousel__slide"
+                                         data-thumb-src="https://lipsum.app/id/59/192x144">
+                                        <img width="640"
+                                             height="480"
+                                             alt=""
+                                             data-lazy-src="https://lipsum.app/id/59/640x480" />
+                                    </div>
+                                    <div class="f-carousel__slide"
+                                         data-thumb-src="https://lipsum.app/id/37/192x144">
+                                        <img width="640"
+                                             height="480"
+                                             alt=""
+                                             data-lazy-src="https://lipsum.app/id/37/640x480" />
+                                    </div>*@
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+        <script src="~/Scripts/fancyjavascript.js"></script>
+        <script src="~/Scripts/fancythumb.js"></script>
+
+        <script>
+            new Carousel(document.getElementById("myCarousel"), {
+                // Your custom options
+                Dots: false
+            }, { Thumbs });
+        </script>
+    </form>
+}
+
+
+<script>
+    $(document).ready(function () {
+        $(".imageBrowes").change(function () {
+            var fileInputId = $(this).index(".imageBrowes") + 1;
+            var File = this.files;
+            if (File && File[0]) {
+                ReadImage(File[0], fileInputId);
+            }
+        });
+        @*var imageUrl1 = "@Model.ProjectImage1";
+    var imageUrl2 = "@Model.ProjectImage2";
+    var imageUrl3 = "@Model.ProjectImage3";*@
+
+    $(".targetImg").eq(0).attr('src', imageUrl1);
+    $(".targetImg").eq(1).attr('src', imageUrl2);
+    $(".targetImg").eq(2).attr('src', imageUrl3);
+    });
+
+    var ReadImage = function (file, index) {
+        var reader = new FileReader;
+        var image = new Image;
+
+        reader.readAsDataURL(file);
+        reader.onload = function (_file) {
+            image.src = _file.target.result;
+            image.onload = function () {
+                var height = this.height;
+                var width = this.width;
+                var type = file.type;
+                var size = ~~(file.size / 1024) + "KB";
+
+                $(".targetImg").eq(index - 1).attr('src', _file.target.result);
+                $(".description").eq(index - 1).text("Size:" + size + ", " + height + "X " + width + ", " + type + "");
+                $(".add-icon").eq(index - 1).hide();
+                $(".thumbnail").eq(index - 1).show();
+            };
+        };
+    };
+
+    var ClearPreview = function (index) {
+        $(".imageBrowes").eq(index - 1).val('');
+        $(".description").eq(index - 1).text('');
+        $(".add-icon").eq(index - 1).show();
+        $(".thumbnail").eq(index - 1).hide();
+    };
+
+    var EditImage = function (index) {
+        $(".imageBrowes").eq(index - 1).click();
+    };
+</script>
+<script type="text/javascript" lang="javascript">CKEDITOR.replace('editor');</script>

@@ -1,4 +1,4 @@
-﻿
+﻿@model DronePhotographerWebSite.Models.Project
 @{
     ViewBag.Title = "ProjectAdd";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,28 +9,31 @@
 <link href="~/styleCss/StyleSheet1.css" rel="stylesheet" />
 <script src="~/ckeditor_4.18.0_776f56bf4dc7/ckeditor/ckeditor.js"></script>
 <link href="~/ckeditor_4.18.0_776f56bf4dc7/ckeditor/contents.css" rel="stylesheet" />
-<div class="main-panel">
-    <div class="content-wrapper">
-        <div class="row">
-            <div class="col-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Proje Ekle</h4>
-                        <p class="card-description">
-                            Proje Bilgilerini Doldurunuz
-                        </p>
-                        <form class="forms-sample">
-                            <div class="form-group">
-                                <label for="exampleInputName1">Proje Adı</label>
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail3">Proje Kısa Açıklaması</label>
-                                <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
-                            </div>
-                            <br />
-                            <div class="row">
-                               
+@using (Html.BeginForm("ProjectAdd", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<form method="post">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Proje Ekle</h4>
+                            <p class="card-description">
+                                Proje Bilgilerini Doldurunuz
+                            </p>
+                            <form class="forms-sample">
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Proje Adı</label>
+                                    @Html.TextBoxFor(x => x.ProjetTitle, new { @class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail3">Proje Kısa Açıklaması</label>
+                                    @Html.TextBoxFor(x => x.ProjectDescription, new { @class = "form-control" })
+                                </div>
+                                <br />
+                                <div class="row">
+
                                     <div class="col-md-4  mx-auto">
                                         <div class="file-upload-container" style="margin-right:50px;">
                                             <label for="fileInput1" class="custom-file-upload text-center" name="UrunGorsel1" accept=".jpeg,.png,.jpg">
@@ -95,66 +98,67 @@
                                         </div>
                                     </div>
                                 </div>
-                          
+
                                 <br />
                                 <div class="form-group">
                                     <label for="exampleTextarea1">Proje Detayı</label>
-                                    <textarea name="UrunAciklama" class="ckeditor"></textarea>
+                                    <textarea name="ProjectDetail" class="ckeditor"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary mr-2">Gönder</button>
                                 <button class="btn btn-light">İptal</button>
-</form>
+                            </form>
+                        </div>
                     </div>
                 </div>
+
             </div>
-
         </div>
+
     </div>
+</form>
+        }
 
-</div>
+        <script>
+            $(document).ready(function () {
+                $(".imageBrowes").change(function () {
+                    var fileInputId = $(this).index(".imageBrowes") + 1;
+                    var File = this.files;
+                    if (File && File[0]) {
+                        ReadImage(File[0], fileInputId);
+                    }
+                });
+            });
 
+            var ReadImage = function (file, index) {
+                var reader = new FileReader;
+                var image = new Image;
 
-<script>
-    $(document).ready(function () {
-        $(".imageBrowes").change(function () {
-            var fileInputId = $(this).index(".imageBrowes") + 1;
-            var File = this.files;
-            if (File && File[0]) {
-                ReadImage(File[0], fileInputId);
-            }
-        });
-    });
+                reader.readAsDataURL(file);
+                reader.onload = function (_file) {
+                    image.src = _file.target.result;
+                    image.onload = function () {
+                        var height = this.height;
+                        var width = this.width;
+                        var type = file.type;
+                        var size = ~~(file.size / 1024) + "KB";
 
-    var ReadImage = function (file, index) {
-        var reader = new FileReader;
-        var image = new Image;
-
-        reader.readAsDataURL(file);
-        reader.onload = function (_file) {
-            image.src = _file.target.result;
-            image.onload = function () {
-                var height = this.height;
-                var width = this.width;
-                var type = file.type;
-                var size = ~~(file.size / 1024) + "KB";
-
-                $(".targetImg").eq(index - 1).attr('src', _file.target.result);
-                $(".description").eq(index - 1).text("Size:" + size + ", " + height + "X " + width + ", " + type + "");
-                $(".add-icon").eq(index - 1).hide();
-                $(".thumbnail").eq(index - 1).show();
+                        $(".targetImg").eq(index - 1).attr('src', _file.target.result);
+                        $(".description").eq(index - 1).text("Size:" + size + ", " + height + "X " + width + ", " + type + "");
+                        $(".add-icon").eq(index - 1).hide();
+                        $(".thumbnail").eq(index - 1).show();
+                    };
+                };
             };
-        };
-    };
 
-    var ClearPreview = function (index) {
-        $(".imageBrowes").eq(index - 1).val('');
-        $(".description").eq(index - 1).text('');
-        $(".add-icon").eq(index - 1).show();
-        $(".thumbnail").eq(index - 1).hide();
-    };
+            var ClearPreview = function (index) {
+                $(".imageBrowes").eq(index - 1).val('');
+                $(".description").eq(index - 1).text('');
+                $(".add-icon").eq(index - 1).show();
+                $(".thumbnail").eq(index - 1).hide();
+            };
 
-    var EditImage = function (index) {
-        $(".imageBrowes").eq(index - 1).click();
-    };
-</script>
-<script type="text/javascript" lang="javascript">CKEDITOR.replace('editor');</script>
+            var EditImage = function (index) {
+                $(".imageBrowes").eq(index - 1).click();
+            };
+        </script>
+        <script type="text/javascript" lang="javascript">CKEDITOR.replace('editor');</script>

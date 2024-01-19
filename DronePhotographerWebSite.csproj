@@ -807,6 +807,8 @@
     <Content Include="ckeditor_4.18.0_776f56bf4dc7\ckeditor\SECURITY.md" />
     <Content Include="ckeditor_4.18.0_776f56bf4dc7\ckeditor\skins\moono-lisa\readme.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\fancyjavascript.js" />
+    <Content Include="Scripts\fancythumb.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -2255,6 +2257,8 @@
     <Content Include="img\add.png" />
     <Content Include="img\delete.png" />
     <Content Include="img\pen.png" />
+    <Content Include="styleCss\fancybox.css" />
+    <Content Include="styleCss\fancythumb.css" />
     <Content Include="styleCss\StyleSheet1.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -4508,6 +4512,8 @@
     <Content Include="Views\Project\ProjectAdd.cshtml" />
     <Content Include="Views\Project\ProjectUpdate.cshtml" />
     <Content Include="Views\Project\ProjectList.cshtml" />
+    <Content Include="Views\Project\ProjectGet.cshtml" />
+    <Content Include="Views\Project\ProjectDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

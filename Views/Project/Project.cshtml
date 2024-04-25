@@ -1,0 +1,48 @@
+﻿@using DronePhotographerWebSite.Models
+@model List<Project>
+@{
+    ViewBag.Title = "Project";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<!--? Hero Start -->
+<div class="slider-area2 ">
+    <div class="slider-height2 hero-overly d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero__caption hero__caption2">
+                        <h2>Projeler</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hero End -->
+<!--? services area start -->
+<section class="services-section section-padding30 fix">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="single-cat mb-40">
+                        <div class="cat-icon">
+                            <img src="@item.ProjectImage1" alt="">
+                        </div>
+                        <div class="cat-cap">
+                            <h3><a href="~/Views/Project/ProjectDetail.cshtml"></a>@item.ProjetTitle</h3>
+                            <p>@item.ProjectDescription</p>
+                         
+                        </div>
+                        <br />
+                        <a href="/Project/ProjectDetail/@item.ProjectId" class="btn btn-warning" style="text-align:center;justify-content:center;margin:auto;"> Proje Detay</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+

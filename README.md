@@ -1,3 +1,6 @@
+Drone fotoğrafları ve videoları çeken bir şirket için yönetilebilir bir web sitesi oluşturdum.
+
+
 I created a manageable website for a company that takes drone photos and videos.
 
 Technologies Used:Asp.net MVC5 ,HTML,CSS,Bootsrap,Jquery,MSSQL
